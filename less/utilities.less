@@ -1,0 +1,88 @@
+@colors:
+	red @red,
+	orange @orange,
+	amber @amber,
+	green @green,
+	teal @teal,
+	cyan @cyan,
+	light-blue @light-blue,
+	blue @blue,
+	dark-blue @dark-blue,
+	purple @purple,
+	dark-purple @dark-purple,
+	black  @black,
+	white @white,
+	transparent @transparent;
+
+// ............................................................
+// .for
+
+.for(@i, @n) {.-each(@i)}
+.for(@n)     when (isnumber(@n)) {.for(1, @n)}
+.for(@i, @n) when not (@i = @n)  {
+	.for((@i + (@n - @i) / abs(@n - @i)), @n);
+}
+
+// ............................................................
+// .for-each
+
+.for(@array)   when (default()) {.for-impl_(length(@array))}
+.for-impl_(@i) when (@i > 1)    {.for-impl_((@i - 1))}
+.for-impl_(@i) when (@i > 0)    {.-each(extract(@array, @i))}
+
+
+.colors-background {
+	.for(@colors); .-each(@color) {
+		@name: extract(@color, 1);
+		&.@{name} {
+			background-color: extract(@color, 2);
+		}
+	}
+}
+
+.colors-background-fallback {
+	.for(@colors); .-each(@color) {
+		@name: extract(@color, 1);
+		&.@{name}-background {
+			background-color: extract(@color, 2);
+		}
+	}
+}
+
+.colors-background-foreground-fallback {
+	.for(@colors); .-each(@color) {
+		@name: extract(@color, 1);
+		&.@{name}-background {
+			background-color: extract(@color, 2);
+			color: contrast(extract(@color, 2), @black, @white);
+		}
+	}
+}
+
+.colors-border {
+	.for(@colors); .-each(@color) {
+		@name: extract(@color, 1);
+		&.@{name} {
+			border-color: extract(@color, 2);
+		}
+	}
+}
+
+.colors-border-fallback {
+	.for(@colors); .-each(@color) {
+		@name: extract(@color, 1);
+		&.@{name}-border {
+			border-color: extract(@color, 2);
+		}
+	}
+}
+
+.colors-foreground {
+	.for(@colors); .-each(@color) {
+		@name: extract(@color, 1);
+
+		&.@{name} {
+			color: extract(@color, 2);
+		}
+	}
+}

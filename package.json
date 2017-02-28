@@ -1,0 +1,53 @@
+{
+  "name": "luminous-ui",
+  "version": "1.0.0",
+  "description": "An ui kit for korean-healthy",
+  "main": "dist/luminous.bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/korean-healthy/luminous-ui.github.io.git"
+  },
+  "keywords": [
+    "health",
+    "web"
+  ],
+  "author": "Khinenw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/korean-healthy/luminous-ui.github.io/issues"
+  },
+  "homepage": "https://github.com/korean-healthy/luminous-ui.github.io#readme",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-latest": "^6.22.0",
+    "css-loader": "^0.26.2",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^0.10.1",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-cssnext": "^2.9.0",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^1.3.2",
+    "postcss-reporter": "^3.0.0",
+    "postcss-url": "^5.1.2",
+    "vue-loader": "^11.1.3",
+    "vue-template-compiler": "^2.2.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "mdi": "^1.8.36",
+    "typeface-nanum-barun-gothic": "^1.0.0",
+    "typeface-roboto": "0.0.22",
+    "vue": "^2.2.1",
+    "vue-parallax": "^1.1.1"
+  }
+}
