@@ -1,18 +1,18 @@
 @colors:
-	red @red,
-	orange @orange,
-	amber @amber,
-	green @green,
-	teal @teal,
-	cyan @cyan,
-	light-blue @light-blue,
-	blue @blue,
-	dark-blue @dark-blue,
-	purple @purple,
-	dark-purple @dark-purple,
-	black  @black,
-	white @white,
-	transparent @transparent;
+	red,
+	orange,
+	amber,
+	green,
+	teal,
+	cyan,
+	light-blue,
+	blue,
+	dark-blue,
+	purple,
+	dark-purple,
+	black,
+	white,
+	transparent;
 
 // ............................................................
 // .for
@@ -30,59 +30,48 @@
 .for-impl_(@i) when (@i > 1)    {.for-impl_((@i - 1))}
 .for-impl_(@i) when (@i > 0)    {.-each(extract(@array, @i))}
 
+.colors() {
+	.for(@colors); .-each(@color){
+		.-do(@color);
+	}
+}
 
 .colors-background {
-	.for(@colors); .-each(@color) {
-		@name: extract(@color, 1);
-		&.@{name} {
-			background-color: extract(@color, 2);
+	.colors(); .-do(@color){
+		&.@{color} {
+			background-color: @@color;
 		}
 	}
 }
 
 .colors-background-fallback {
-	.for(@colors); .-each(@color) {
-		@name: extract(@color, 1);
-		&.@{name}-background {
-			background-color: extract(@color, 2);
-		}
-	}
-}
-
-.colors-background-foreground-fallback {
-	.for(@colors); .-each(@color) {
-		@name: extract(@color, 1);
-		&.@{name}-background {
-			background-color: extract(@color, 2);
-			color: contrast(extract(@color, 2), @black, @white);
+	.colors(); .-do(@color){
+		&.@{color}-background {
+			background-color: @@color;
 		}
 	}
 }
 
 .colors-border {
-	.for(@colors); .-each(@color) {
-		@name: extract(@color, 1);
-		&.@{name} {
-			border-color: extract(@color, 2);
+	.colors(); .-do(@color){
+		&.@{color} {
+			border-color: @@color;
 		}
 	}
 }
 
 .colors-border-fallback {
-	.for(@colors); .-each(@color) {
-		@name: extract(@color, 1);
-		&.@{name}-border {
-			border-color: extract(@color, 2);
+	.colors(); .-do(@color){
+		&.@{color}-border {
+			border-color: @@color;
 		}
 	}
 }
 
 .colors-foreground {
-	.for(@colors); .-each(@color) {
-		@name: extract(@color, 1);
-
-		&.@{name} {
-			color: extract(@color, 2);
+	.colors(); .-do(@color){
+		&.@{color} {
+			color: @@color;
 		}
 	}
 }

@@ -12,7 +12,7 @@
 		.colors-foreground;
 
 		border: 1px solid #000;
-		.colors-border-fallback;
+		.colors-border;
 		border-radius: @button-radius;
 		background: transparent;
 		cursor: pointer;
@@ -27,7 +27,16 @@
 		outline: 0;
 
 		&:hover {
-			.colors-background-foreground-fallback;
+			.colors(); .-do(@color){
+				&.@{color} {
+					background-color: @@color;
+					color: contrast(@@color, @black, @white);
+				}
+			}
+		}
+
+		&:active {
+			filter: brightness(90%);
 		}
 	}
 </style>
@@ -43,17 +52,12 @@
 			color: {
 				type: String,
 				default: 'red'
-			},
-
-			border: {
-				type: String,
-				default: 'red'
 			}
 		},
 
 		computed: {
 			className(){
-				return `lumi-button ${this.color} ${this.border}-border ${this.border}-background`;
+				return `lumi-button ${this.color}`;
 			}
 		}
 	};

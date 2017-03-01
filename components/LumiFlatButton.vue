@@ -17,7 +17,28 @@
 		font-family: @button-font;
 		font-size: @button-font-size;
 		font-weight: @button-font-weight;
+		height: @button-height;
+		line-height: calc(@button-height - 40px);
+		cursor: pointer;
+		padding: 20px 50px;
 		outline: 0;
+		transition: background @button-animate-tick ease;
+
+		&:hover {
+			.colors(); .-do(@color) {
+				&.@{color}-background {
+					background: lighten(@@color, 10%);
+				}
+			}
+		}
+
+		&:active {
+			.colors(); .-do(@color) {
+				&.@{color}-background{
+					background: darken(@@color, 10%);
+				}
+			}
+		}
 	}
 </style>
 

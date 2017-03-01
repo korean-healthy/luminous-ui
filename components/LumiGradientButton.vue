@@ -61,6 +61,10 @@
 			color: #fff;
 		}
 
+		&:active {
+			filter: brightness(90%);
+		}
+
 		.borderfix-left {
 			left: 0;
 			border-top-left-radius: @button-radius;
