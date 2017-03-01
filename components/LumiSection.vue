@@ -15,11 +15,23 @@
 	.lumi-section {
 		background-size: cover;
 		background-position: center;
-		
+
+		&.full {
+			height: 100vh;
+		}
+
 		.colors-background;
+
+		.lumi-container {
+			height: 100%;
+		}
 
 		.lumi-section-inner {
 			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			height: 100%;
+			align-items: center;
 			min-height: @section-height;
 		}
 	}
@@ -46,6 +58,10 @@
 			attach: {
 				type: String,
 				default: 'center center'
+			},
+
+			full: {
+				type: Boolean
 			}
 		},
 
@@ -57,7 +73,7 @@
 			},
 
 			className(){
-				return `lumi-section ${this.color}`
+				return `lumi-section ${this.color}${this.full ? ' full' : ''}`;
 			}
 		},
 

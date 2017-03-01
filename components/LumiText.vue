@@ -6,7 +6,8 @@
 
 <style lang="less" scoped>
 	@import "~theme";
-
+	@import "~utilities";
+	
 	.lumi-text{
 		font-family: @font;
 
@@ -17,6 +18,8 @@
 		&.italic {
 			font-style: italic;
 		}
+
+		.colors-foreground;
 	}
 </style>
 
@@ -25,7 +28,7 @@
 		props: {
 			color: {
 				type: String,
-				default: '#fff'
+				default: 'white'
 			},
 
 			font: {
@@ -53,14 +56,14 @@
 
 		computed: {
 			style(){
-				return `color: ${this.color};` +
-					`${this.font ? `font-family: ${this.font};` : ''}` +
+				return `${this.font ? `font-family: ${this.font};` : ''}` +
 					`font-size: ${this.size};` +
 					`font-weight: ${this.weight};`;
 			},
 
 			className(){
-				return `lumi-text${this.vertical ? ' vertical' : ''}${this.italic ? ' italic' : ''}`
+				return `lumi-text ${this.color}` +
+					`${this.vertical ? ' vertical' : ''}${this.italic ? ' italic' : ''}`;
 			}
 		}
 	};
