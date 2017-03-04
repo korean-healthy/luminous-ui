@@ -1,9 +1,9 @@
 <template>
 	<button class="lumi-gradient-button" @click="click">
-		<div class="backgroundfix"></div>
-		<div class="borderfix-left"></div>
-		<slot></slot>
-		<div class="borderfix-right"></div>
+		<div class="lumi-backgroundfix"></div>
+		<div class="lumi-borderfix-left"></div>
+		<div class="lumi-button-text"><slot></slot></div>
+		<div class="lumi-borderfix-right"></div>
 	</button>
 </template>
 
@@ -33,7 +33,12 @@
 			outline: 0;
 		}
 
-		.borderfix-left, .borderfix-right {
+		.lumi-button-text {
+			z-index: 1;
+			position: relative;
+		}
+
+		.lumi-borderfix-left, .lumi-borderfix-right {
 			position: absolute;
 			top: 0;
 			width: 50%;
@@ -41,7 +46,7 @@
 			box-sizing: border-box;
 		}
 
-		.backgroundfix {
+		.lumi-backgroundfix {
 			position: absolute;
 			opacity: 0;
 			top: 0;
@@ -50,12 +55,12 @@
 			height: 100%;
 			background: linear-gradient(to right, @button-gradient-start, @button-gradient-end);
 			border-radius: @button-radius;
-			z-index: -1;
+			z-index: 0;
 			transition: opacity @button-animate-tick ease;
 		}
 
 		&:hover {
-			.backgroundfix {
+			.lumi-backgroundfix {
 				opacity: 1;
 			}
 			color: #fff;
@@ -65,7 +70,7 @@
 			filter: brightness(90%);
 		}
 
-		.borderfix-left {
+		.lumi-borderfix-left {
 			left: 0;
 			border-top-left-radius: @button-radius;
 			border-bottom-left-radius: @button-radius;
@@ -75,7 +80,7 @@
 			border-bottom: @button-border solid @button-gradient-start;
 		}
 
-		.borderfix-right {
+		.lumi-borderfix-right {
 			right: 0;
 			border-top-right-radius: @button-radius;
 			border-bottom-right-radius: @button-radius;

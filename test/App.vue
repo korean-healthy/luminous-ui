@@ -1,5 +1,14 @@
 <template>
 	<lumi-app>
+		<lumi-navbar color="dark-blue">
+			<lumi-navbar-link href="/" slot="title" no-effect>
+				<img src="./korean-healthy.svg" style="width: 48px; height: 48px; padding: 8px;">
+			</lumi-navbar-link>
+			<lumi-navbar-link href="https://blog.khinenw.tk">
+				Blog
+			</lumi-navbar-link>
+		</lumi-navbar>
+
 		<lumi-section background="https://i.imgur.com/rrLsKeb.jpg" attach="top left" full>
 			<lumi-row>
 				<lumi-column>
@@ -35,13 +44,30 @@
 		<lumi-container>
 			<h1>
 				<lumi-icon icon="information"></lumi-icon>
-				<lumi-text color="black" weight="800">Foods</lumi-text>
+				<lumi-text color="black" weight="800">Galleries</lumi-text>
 			</h1>
+
+			<lumi-gallery>
+				<lumi-image-box src="https://placehold.it/300x200"></lumi-image-box>
+				<lumi-image-box src="https://placehold.it/300x200"></lumi-image-box>
+				<lumi-image-box src="https://placehold.it/300x200"></lumi-image-box>
+				<lumi-image-box src="https://placehold.it/300x200"></lumi-image-box>
+				<lumi-image-box src="https://placehold.it/300x200"></lumi-image-box>
+				<lumi-image-box src="https://placehold.it/300x200" text>
+					<lumi-text style="margin-bottom: 30px;" weight="200">Test</lumi-text>
+					<lumi-flat-button background="blue" color="white" :click="openModal">
+						READ MORE
+					</lumi-flat-button>
+				</lumi-image-box>
+			</lumi-gallery>
 		</lumi-container>
 
-		<lumi-modal :opened="modal" :backdrop-close="closeModal" :closing="closing" title="Test Modal!" backdrop-closable>
+		<lumi-section color="dark-blue" style="margin-top: 100px;">
+		</lumi-section>
+
+		<lumi-modal :opened="modal" :backdrop-close="closeModal" :closing="closing" title="Test Modal!">
 			<template v-slot="buttons">
-				<lumi-button :click="alertButton" color="teal">Ooh!</lumi-button>
+				<lumi-gradient-button :click="alertButton">Ooh!</lumi-gradient-button>
 			</template>
 		</lumi-modal>
 	</lumi-app>
@@ -58,17 +84,21 @@
 		methods: {
 			openModal(){
 				this.modal = true;
-				this.closint = false;
+				this.closing = false;
 			},
 
 			closeModal(){
-				this.modal = false;
+				this.closing = true;
+				setTimeout(() => {
+					this.modal = false;
+				}, 300);
 			},
 
 			alertButton(){
 				this.closing = true;
 				setTimeout(() => {
 					this.modal = false;
+					alert('Oh!');
 				}, 300);
 			}
 		}

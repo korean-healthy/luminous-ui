@@ -1,13 +1,12 @@
 <template>
 	<div class="lumi-modal" v-if="opened">
-		<section :class="className">
+		<section :class="className" @click="closeBackdrop">
 			<div class="lumi-modal-inner">
 				<h2 v-html="title"></h2>
 				<slot></slot>
 				<slot name="buttons"></slot>
 			</div>
 		</section>
-		<lumi-backdrop :click="backdropClose" :closable="backdropClosable" :closing="closing"></lumi-backdrop>
 	</div>
 </template>
 
@@ -24,9 +23,41 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 100;
+		background-color: fadeout(@backdrop-color, 20%);
+
+		opacity: 0;
+		animation-name: lumi-modal-show;
+		animation-duration: .35s;
+		animation-fill-mode: forwards;
+		animation-timing-function: ease;
 
 		h2 {
 			color: @white;
+		}
+
+		&.closing {
+			animation-name: lumi-modal-hide;
+		}
+	}
+
+	@keyframes lumi-modal-show {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes lumi-modal-hide {
+		0% {
+			opacity: 1;
+			visibility: visible;
+		}
+		100% {
+			opacity: 0;
+			visibility: hidden;
+			display: none;
 		}
 	}
 </style>
@@ -42,12 +73,7 @@
 				type: Function
 			},
 
-			backdropClosable: {
-				type: Boolean
-			},
-
 			closing: {
-				//TODO
 				type: Boolean
 			},
 
@@ -58,8 +84,14 @@
 		},
 
 		computed: {
-			className(){
+			className() {
 				return `lumi-modal-content${this.closing ? ' closing' : ''}`;
+			}
+		},
+
+		methods: {
+			closeBackdrop() {
+				if(this.backdropClose) this.backdropClose();
 			}
 		}
 	}
