@@ -30,7 +30,9 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: '/dist/',
-		filename: '[name].bundle.js'
+		filename: '[name].bundle.js',
+		library: 'LuminousUI',
+		libraryTarget: 'umd'
 	},
 
 	module: {

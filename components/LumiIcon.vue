@@ -2,6 +2,10 @@
 	<i :class="className"></i>
 </template>
 
+<style lang="less" scoped>
+	@import "~theme";
+</style>
+
 <script>
 	export default {
 		props: {

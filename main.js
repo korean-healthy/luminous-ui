@@ -7,6 +7,8 @@ if(typeof require !== 'undefined') {
 
 	if(typeof module !== 'undefined' && module.exports) {
 		module.exports = LuminousUI;
+	} else {
+		window.LuminousUI = LuminousUI;
 	}
 } else {
 	console.error('Require doesn\'t exists!');

@@ -1,5 +1,3 @@
-import Vue from "vue";
-
 import LumiApp from "./components/LumiApp.vue";
 import LumiButton from "./components/LumiButton.vue";
 import LumiColumn from "./components/LumiColumn.vue";
@@ -19,7 +17,7 @@ import LumiStat from "./components/LumiStat.vue";
 import LumiText from "./components/LumiText.vue";
 
 class LuminousUI{
-	static install(){
+	static install(Vue){
 		Vue.component('lumi-app', LumiApp);
 		Vue.component('lumi-button', LumiButton);
 		Vue.component('lumi-column', LumiColumn);

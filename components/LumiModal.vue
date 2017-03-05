@@ -2,9 +2,11 @@
 	<div class="lumi-modal" v-if="opened">
 		<section :class="className" @click="closeBackdrop">
 			<div class="lumi-modal-inner">
-				<h2 v-html="title"></h2>
+				<h2 class="lumi-modal-title" v-html="title"></h2>
 				<slot></slot>
-				<slot name="buttons"></slot>
+				<div class="lumi-modal-buttons">
+					<slot name="buttons"></slot>
+				</div>
 			</div>
 		</section>
 	</div>
@@ -12,6 +14,21 @@
 
 <style lang="less" scoped>
 	@import "~theme";
+
+	.lumi-modal-title {
+		text-align: center;
+	}
+
+	.lumi-modal-buttons {
+		margin-top: 30px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.lumi-modal-inner {
+		max-width: 768px;
+	}
 
 	.lumi-modal-content {
 		display: flex;
