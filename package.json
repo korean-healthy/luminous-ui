@@ -1,6 +1,6 @@
 {
   "name": "luminous-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An ui kit for korean-healthy",
   "main": "main.js",
   "scripts": {
