@@ -35,7 +35,7 @@
 			animation-name: lumi-navbar-drop;
 			position: fixed;
 			top: 0;
-			box-shadow: 0 0 3px 3px @black;
+			box-shadow: 0 0 3px 1px #404040;
 			padding-bottom: 0;
 
 			.colors-background;
