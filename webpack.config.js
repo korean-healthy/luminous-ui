@@ -70,7 +70,7 @@ module.exports = {
 				loader: cssExtract
 			},
 			{
-				test: /\.(png|jpg|gif|svg|ttf|woff|woff2|eot)$/,
+				test: /\.(png|jpe?g|gif|svg|ttf|woff2?|eot)$/,
 				loader: 'file-loader',
 				options: {
 					name: 'files/[name].[ext]?[hash]'

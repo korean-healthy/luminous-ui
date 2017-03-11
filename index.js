@@ -1,3 +1,9 @@
+// Importing Fonts
+import "typeface-roboto";
+import "typeface-nanum-barun-gothic";
+import "mdi/css/materialdesignicons.css";
+
+// Importing Luminous Components
 import LumiApp from "./components/LumiApp.vue";
 import LumiButton from "./components/LumiButton.vue";
 import LumiColumn from "./components/LumiColumn.vue";
